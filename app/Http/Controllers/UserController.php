@@ -19,7 +19,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse
+    public function index()
     {
         return response()->json([
             'data' => $this->userRepository->getAllUser()
@@ -30,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $userDetails = $request->only([
             'name',
@@ -48,7 +48,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request): JsonResponse
+    public function show(Request $request)
     {
         $userId = $request->route('id');
 
@@ -61,7 +61,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request): JsonResponse
+    public function update(Request $request)
     {
         $userId = $request->route('id');
         $userDetails = $request->only([
@@ -77,7 +77,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $userId = $request->route('id');
         $this->userRepository->deleteUser($userId);

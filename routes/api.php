@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,18 +17,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::controller(UserController::class)->group(function () {
-    Route::get('user', 'index');
-    Route::get(config('global.userId'), 'show');
-    Route::post('user', 'store');
-    Route::put(config('global.userId'), 'update');
-    Route::delete(config('global.userId'), 'destroy');
-});
 
-Route::controller(OrderController::class)->group(function () {
-    Route::get('orders', 'index');
-    Route::get(config('global.orderId'), 'show');
-    Route::post('orders', 'store');
-    Route::put(config('global.orderId'), 'update');
-    Route::delete(config('global.orderId'), 'destroy');
-});
+Route::apiResource('/user', UserController::class)->parameters([
+    'user' => 'id'
+]);
+
+Route::apiResource('/orders', OrderController::class)->parameters([
+    'orders' => 'id'
+]);
