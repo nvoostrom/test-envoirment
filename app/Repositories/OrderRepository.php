@@ -9,7 +9,7 @@ class OrderRepository implements OrderRepositoryInterface
 {
     public function getAllOrders()
     {
-        return Order::all();
+        return Order::orderBy('client')->get();
     }
 
     public function getOrderById($orderId)
@@ -34,6 +34,6 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function getFulfilledOrders()
     {
-        return Order::where('is_fulfilled', true);
+        return Order::where('is_fulfilled', true)->get();
     }
 }
