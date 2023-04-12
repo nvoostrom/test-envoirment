@@ -18,8 +18,10 @@ class OrderFactory extends Factory
     {
         return [
             'details' => fake()->sentences(4, true),
-            'client'  => fake()->name(),
-            'is_fulfilled' => fake()->boolean()
+            'client' => fake()->name(),
+            'is_fulfilled' => fake()->boolean(),
+            'created_at' => fake()->dateTimeBetween('-5 week', '-1 week')->format('Y-m-d H:i:s'),
+            'updated_at' => fake()->dateTimeBetween('-1 week', '0 week')->format('Y-m-d H:i:s')
         ];
     }
 }

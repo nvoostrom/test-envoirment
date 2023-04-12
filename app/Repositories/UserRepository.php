@@ -9,7 +9,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getAllUser()
     {
-        return user::all();
+        return user::orderBy('email_verified_at')->get();
     }
     public function getUserById($userId)
     {
